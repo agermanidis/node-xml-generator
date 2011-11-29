@@ -1,0 +1,18 @@
+{
+  "author": "Anastasis Germanidis <agermanidis@gmail.com> (http://agermanidis.com)",
+  "name": "xml-generator",
+  "description": "Ultra-simple Coffeescript DSL for generating XML.",
+  "version": "0.0.0",
+  "main": "./lib/xml-generator.js",
+  "keywords" : ["xml", "template"],
+  "engines": {
+    "node": "*"
+  },
+  "dependencies": {
+    "underscore" : "1.2.x"
+  },
+  "directories" : {
+    "example" : "example",
+    "lib" : "lib"
+  }
+}

@@ -27,16 +27,20 @@ xml_to_string = (children) ->
     "<#{child.node_name}#{params}>#{body}</#{child.node_name}>"
   children_xml.join ''
 
-exports = (args...) ->
+exports.generator = (args...) ->
   params = args[0]
   params.prolog ?= ''
-  env =
-    result: []
-    partial: (f, args...) ->
-      result = f.apply @, args
+  env = {}
   if params.tags?
     for tag_name in params.tags
         env[tag_name] = tag tag_name
+  if params.partials?
+    for partial in params.partials
+      env[partial] = partial
+  _(env).extend
+    result: []
+    partial: (f, args...) ->
+      result = f.apply @, args
   (body) =>
     body.apply env, []
     params.prolog + xml_to_string env.result
